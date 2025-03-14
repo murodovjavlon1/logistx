@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
 final GoRouter _router = GoRouter(
   routes: [
     GoRoute(path: '/', builder: (context, state) => HomePage()),
-    GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
+    GoRoute(path: '/home_page', builder: (context, state) => SignInScreen()),
     GoRoute(path: '/sign', builder: (context, state) => SignUpScreen()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
