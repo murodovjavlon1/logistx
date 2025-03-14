@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logistx/providers/visibility_provider.dart';
-import 'package:logistx/screen/auth/presentation/pages/Confirmation_two.dart';
+//import 'package:logistx/screen/auth/presentation/pages/Confirmation_two.dart';
 //import 'package:logistx/screen/auth/presentation/pages/confirmation.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -113,16 +113,16 @@ class ForgotPassword extends StatelessWidget {
                       //     ),
                       //   );
                       // } else {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) {
-                        //       return ConfirmationTwo(email: emailController.text, password: newpasswordController.text,
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return ConfirmationTwo(email: emailController.text, password: newpasswordController.text,
 
-                        //       );
-                        //     },
-                        //   ),
-                        // );
+                      //       );
+                      //     },
+                      //   ),
+                      // );
                       // }
                     },
                     child: Text(

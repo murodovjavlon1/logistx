@@ -3,6 +3,8 @@ import 'package:logistx/screen/auth/presentation/pages/confirmation.dart';
 import 'package:provider/provider.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 
+
+
 class SignUpScreen extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api

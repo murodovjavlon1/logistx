@@ -160,4 +160,12 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  
+
+void sendRequestToApi(String data) {
+  // Bu yerda API so‘rov yuborish logikasi bo‘ladi
+  print("APIga so‘rov yuborildi: $data");
+}
+
+
 }

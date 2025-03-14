@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:logistx/providers/visibility_provider.dart';
 import 'package:logistx/screen/auth/presentation/pages/forgot_password.dart';
 import 'package:logistx/screen/auth/presentation/pages/registration.dart';
@@ -132,6 +133,8 @@ class SignInScreen extends StatelessWidget {
                   password: "1234567890",
                   role: "DRIVER",
                 );
+                context.go("location");
+                //GoRoute.of(context).go("")
               }),
 
               SizedBox(height: 10),
@@ -143,10 +146,7 @@ class SignInScreen extends StatelessWidget {
                   Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUpScreen()),
-                      );
+                      // context.go
                     },
                     child: Text(
                       "Sign up",
