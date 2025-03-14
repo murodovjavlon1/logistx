@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:logistx/screen/auth/presentation/pages/confirmation.dart';
 import 'package:provider/provider.dart';
-import 'package:logistx/providers/auth_provider.dart';
+import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -60,7 +61,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(height: 20),
 
               // **Sign Up Button**
-              buildButton("Continue", Colors.blue, () async {}),
+              buildButton("Continue", Colors.blue, () async {
+                final result = await authProvider.register(
+                  email: emailController.text,
+                  userName: 'adaddad',
+                  password: '1234567890',
+                  fullName: 'Zufarjon',
+                  deviceId: '12312jnnini123',
+                  role: 'DRIVER',
+                );
+                debugPrint("$result");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Confirmation(
+                        password: passwordController.text,
+                        userName: usernameController.text,
+                        email: emailController.text,
+                      );
+                    },
+                  ),
+                );
+              }),
 
               SizedBox(height: 10),
 
@@ -186,3 +209,4 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
+///VirtualBox bilan  windows turib iso liunx urnatsa buladi

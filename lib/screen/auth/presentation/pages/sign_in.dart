@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:logistx/providers/visibility_provider.dart';
-import 'package:logistx/screen/auth/registration.dart';
+import 'package:logistx/screen/auth/presentation/pages/forgot_password.dart';
+import 'package:logistx/screen/auth/presentation/pages/registration.dart';
 import 'package:provider/provider.dart';
-import 'package:logistx/providers/auth_provider.dart';
+import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 
 // ignore: must_be_immutable
 class SignInScreen extends StatelessWidget {
@@ -105,7 +106,16 @@ class SignInScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ForgotPassword();
+                        },
+                      ),
+                    );
+                  },
                   child: Text(
                     "Forgot your password?",
                     style: TextStyle(color: Colors.blue),
@@ -116,7 +126,13 @@ class SignInScreen extends StatelessWidget {
               SizedBox(height: 10),
 
               // **Sign In Button**
-              buildButton("Sign In", Colors.blue, () async {}),
+              buildButton("Sign In", Colors.blue, () async {
+                await authProvider.signIn(
+                  email: "zufarnozimov8@gmail.com",
+                  password: "1234567890",
+                  role: "DRIVER",
+                );
+              }),
 
               SizedBox(height: 10),
 
@@ -201,4 +217,3 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
-

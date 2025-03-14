@@ -11,21 +11,13 @@ final class ClientService {
 
   factory ClientService() => _service;
 
-  static const String baseUrl = 'api.yodimdasiz.uz';
-  static const String _version = '/api';
+  static const String baseUrl = 'api.logistx.uz';
 
-  static const String register = '$_version/auth/sign-up';
-  static const String code = '$_version/auth/verify-account';
-  static const String login = '$_version/auth/sign-in';
-  static const String resendCode = '$_version/auth/resend-code';
-  static const String forgetPassword = '$_version/auth/forgot-password';
-  static const String checkForgetPassword =
-      '$_version/auth/check-forgot-password';
-  static const String findPost = '$_version/posts/find/';
-  static const String getAllPost = '$_version/posts/all';
-  static const String userMe = '$_version/users/me';
-  static const String comments = '$_version/comments/all/';
-  static const String myPosts = '$_version/posts/my';
+  static const String register = '/auths/registerByEmail';
+  static const String login = "/auths/loginByEmail";
+  static const String verify = "/auths/verify";
+  static const String updatePassword = "/users/updatePassword";
+  static const String checkUpdated = "/users/checkUpdatedPassword";
 
   static Future<String?> get({
     required String api,
