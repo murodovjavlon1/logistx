@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logistx/providers/FirestoreProvider.dart';
+import 'package:logistx/screen/auth/presentation/pages/forgot_password.dart';
 import 'package:logistx/screen/auth/presentation/pages/registration.dart';
 import 'package:logistx/screen/auth/presentation/pages/sign_in.dart';
 import 'package:logistx/screen/auth/view_model/OTPProvider.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 import 'package:logistx/providers/visibility_provider.dart';
 import 'package:logistx/screen/pages/home_page.dart';
+import 'package:logistx/screen/pages/view_model/hpme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => FirestoreProvider()),
         ChangeNotifierProvider(create: (context) => VisibilityProvider()),
+        ChangeNotifierProvider(create: (context) => HomeProvider()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -44,8 +47,17 @@ class MyApp extends StatelessWidget {
 
 final GoRouter _router = GoRouter(
   routes: [
-    GoRoute(path: '/', builder: (context, state) => HomePage()),
-    GoRoute(path: '/home_page', builder: (context, state) => SignInScreen()),
+    GoRoute(
+      path: '/',
+      builder: (context, state) => SignInScreen(),
+      routes: [
+        GoRoute(path: '/forgot', builder: (context, state) => ForgotPassword(),
+        routes: [
+        ]
+        ),
+        GoRoute(path: '/signup', builder: (context, state) => SignUpScreen()),
+      ],
+    ),
     GoRoute(path: '/sign', builder: (context, state) => SignUpScreen()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),

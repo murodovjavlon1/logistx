@@ -41,7 +41,8 @@ class AppDrawer extends StatelessWidget {
                 },
               ),
             ),
-            Text("Main Menu"),
+          //  const Divider(),
+           // Text("Main Menu"),
             Card(
               child: ListTile(
                 leading: const Icon(Icons.chat),
@@ -60,7 +61,7 @@ class AppDrawer extends StatelessWidget {
             ),
             Card(
               child: ListTile(
-                leading: const Icon(Icons.local_shipping),
+                leading: const Icon(Icons.apps),
                 title: const Text("Applications"),
                 onTap: () {
                   Navigator.pop(context);

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:logistx/screen/pages/view_model/hpme_provider.dart';
 import 'package:logistx/screen/pages/widget/app_drawer.dart';
+import 'package:logistx/screen/pages/widget/show_dialog_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final sampleItem = Provider.of<HomeProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xFFF5F7FA),
       appBar: AppBar(
@@ -41,7 +45,38 @@ class HomePage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-             
+              showMenu(
+                context: context,
+                position: RelativeRect.fromLTRB(100, 100, 0, 0),
+                items: <PopupMenuEntry<SampleItem>>[
+                  PopupMenuItem<SampleItem>(
+                    value: SampleItem.itemOne,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.plumbing),
+                        ),
+                        Text('Javlon'),
+                      ],
+                    ),
+                  ),
+                  const PopupMenuItem<SampleItem>(
+                    value: SampleItem.itemTwo,
+                    child: Text('Item Two'),
+                  ),
+                  const PopupMenuItem<SampleItem>(
+                    value: SampleItem.itemThree,
+                    child: Text('Item Three'),
+                  ),
+                ],
+              ).then((SampleItem? item) {
+                if (item != null) {
+                  sampleItem.selectItem(
+                    item,
+                  ); // Provider orqali holatni yangilash
+                }
+              });
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 10.0),
@@ -55,8 +90,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-
-          //  IconButton(onPressed: () {}, icon: Icon(Icons.account_circle)),
         ],
       ),
       drawer: AppDrawer(),
@@ -75,7 +108,10 @@ class HomePage extends StatelessWidget {
                       backgroundColor: Colors.blue,
                     ),
                     onPressed: () {
-                      
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => VehicleDialog(),
+                      );
                     },
                     child: Text(
                       "Create New Vehicle",

@@ -64,27 +64,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               // **Sign Up Button**
               buildButton("Continue", Colors.blue, () async {
-                final result = await authProvider.register(
+               if (
+                emailController.text.isNotEmpty||
+                fullNameController.text.isNotEmpty||
+                usernameController.text.isNotEmpty||
+                passwordController.text.isNotEmpty
+               
+               
+               ) {
+                 final result = await authProvider.register(
                   email: emailController.text,
-                  userName: 'adaddad',
-                  password: '1234567890',
-                  fullName: 'Zufarjon',
+                  userName: usernameController.text,
+                  password: passwordController.text,
+                  fullName: fullNameController.text,
                   deviceId: '12312jnnini123',
                   role: 'DRIVER',
                 );
                 debugPrint("$result");
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Confirmation(
-                        password: passwordController.text,
-                        userName: usernameController.text,
-                        email: emailController.text,
-                      );
-                    },
-                  ),
-                );
+               }
+               else{
+                ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Please fill in all the fields"),
+                          ),
+                        );
+
+               }
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return Confirmation(
+                //         password: passwordController.text,
+                //         userName: usernameController.text,
+                //         email: emailController.text,
+                //       );
+                //     },
+                //   ),
+                // );
               }),
 
               SizedBox(height: 10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logistx/providers/visibility_provider.dart';
+import 'package:logistx/screen/auth/presentation/pages/Confirmation_two.dart';
 //import 'package:logistx/screen/auth/presentation/pages/Confirmation_two.dart';
 //import 'package:logistx/screen/auth/presentation/pages/confirmation.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
@@ -105,25 +106,25 @@ class ForgotPassword extends StatelessWidget {
                         email: emailController.text,
                         password: newpasswordController.text,
                       );
-                      // if (emailController.text.isEmpty ||
-                      //     newpasswordController.text.isEmpty) {
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     SnackBar(
-                      //       content: Text("Please fill in all the fields"),
-                      //     ),
-                      //   );
-                      // } else {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return ConfirmationTwo(email: emailController.text, password: newpasswordController.text,
+                      if (emailController.text.isEmpty ||
+                          newpasswordController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Please fill in all the fields"),
+                          ),
+                        );
+                      } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ConfirmationTwo(email: emailController.text, password: newpasswordController.text,
 
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                      // }
+                            );
+                          },
+                        ),
+                      );
+                      }
                     },
                     child: Text(
                       "Update Password",

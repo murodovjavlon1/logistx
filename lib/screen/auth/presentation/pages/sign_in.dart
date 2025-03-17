@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logistx/providers/visibility_provider.dart';
 import 'package:logistx/screen/auth/presentation/pages/forgot_password.dart';
-import 'package:logistx/screen/auth/presentation/pages/registration.dart';
 import 'package:provider/provider.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 
@@ -108,14 +107,7 @@ class SignInScreen extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ForgotPassword();
-                        },
-                      ),
-                    );
+                    context.go('/forgot');
                   },
                   child: Text(
                     "Forgot your password?",
@@ -133,6 +125,7 @@ class SignInScreen extends StatelessWidget {
                   password: "1234567890",
                   role: "DRIVER",
                 );
+                // ignore: use_build_context_synchronously
                 context.go("location");
                 //GoRoute.of(context).go("")
               }),
@@ -146,7 +139,7 @@ class SignInScreen extends StatelessWidget {
                   Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                      // context.go
+                      context.go('/signup');
                     },
                     child: Text(
                       "Sign up",

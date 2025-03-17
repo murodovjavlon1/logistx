@@ -87,7 +87,7 @@ class AuthProvider with ChangeNotifier {
       // ignore: unused_local_variable
       final data = jsonDecode(result);
       debugPrint("${result}");
-      return data['meta']!['userId'].toString();
+      return data['meta']['userId'].toString();
     }
     return null;
   }
