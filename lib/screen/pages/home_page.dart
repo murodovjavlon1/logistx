@@ -1,28 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:logistx/screen/pages/view_model/hpme_provider.dart';
 import 'package:logistx/screen/pages/widget/app_drawer.dart';
+import 'package:logistx/screen/pages/widget/profile.dart';
 import 'package:logistx/screen/pages/widget/show_dialog_widget.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final sampleItem = Provider.of<HomeProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xFFF5F7FA),
       appBar: AppBar(
         backgroundColor: Colors.white,
-        //leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
         actions: [
           Stack(
             children: [
-              IconButton(
-                onPressed: () {
-                  print("object");
-                },
-                icon: Icon(Icons.notifications),
+              PopupMenuButton(
+                offset: Offset(0, 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                // color: Colors.grey[900],
+                itemBuilder:
+                    (context) => [
+                      PopupMenuItem(
+                        enabled: false,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Notifications",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: AssetImage(
+                                    "asset/image/download.jpeg",
+                                  ),
+                                  radius: 20,
+                                ),
+                                SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Javlon",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 3),
+                                    Text(
+                                      "Assalomu Alaykum Baratim",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                icon: Icon(Icons.notifications, color: Colors.black),
               ),
               Positioned(
                 right: 7,
@@ -36,8 +82,9 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Text(
-                    "2",
+                    "1",
                     style: TextStyle(color: Colors.white, fontSize: 12),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -45,38 +92,14 @@ class HomePage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              showMenu(
-                context: context,
-                position: RelativeRect.fromLTRB(100, 100, 0, 0),
-                items: <PopupMenuEntry<SampleItem>>[
-                  PopupMenuItem<SampleItem>(
-                    value: SampleItem.itemOne,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.plumbing),
-                        ),
-                        Text('Javlon'),
-                      ],
-                    ),
-                  ),
-                  const PopupMenuItem<SampleItem>(
-                    value: SampleItem.itemTwo,
-                    child: Text('Item Two'),
-                  ),
-                  const PopupMenuItem<SampleItem>(
-                    value: SampleItem.itemThree,
-                    child: Text('Item Three'),
-                  ),
-                ],
-              ).then((SampleItem? item) {
-                if (item != null) {
-                  sampleItem.selectItem(
-                    item,
-                  ); // Provider orqali holatni yangilash
-                }
-              });
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProfilePage();
+                  },
+                ),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 10.0),

@@ -30,7 +30,7 @@ class VehicleDialog extends StatelessWidget {
             ),
             title: Text(
               "Create new vehicle",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
             ),
             content: Form(
               key: _formKey,
@@ -260,6 +260,9 @@ class VehicleDialog extends StatelessWidget {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         Navigator.pop(context);
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text("Qo'shildi ")));
                       }
                     },
                     child: Text("Continue"),
@@ -273,4 +276,3 @@ class VehicleDialog extends StatelessWidget {
     );
   }
 }
-

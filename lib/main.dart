@@ -4,9 +4,11 @@ import 'package:logistx/providers/FirestoreProvider.dart';
 import 'package:logistx/screen/auth/presentation/pages/forgot_password.dart';
 import 'package:logistx/screen/auth/presentation/pages/registration.dart';
 import 'package:logistx/screen/auth/presentation/pages/sign_in.dart';
+import 'package:logistx/screen/auth/presentation/pages/splash.dart';
 import 'package:logistx/screen/auth/view_model/OTPProvider.dart';
 import 'package:logistx/screen/auth/view_model/auth_provider.dart';
 import 'package:logistx/providers/visibility_provider.dart';
+import 'package:logistx/screen/pages/chat.dart';
 import 'package:logistx/screen/pages/home_page.dart';
 import 'package:logistx/screen/pages/view_model/hpme_provider.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +62,7 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(path: '/sign', builder: (context, state) => SignUpScreen()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
-    GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
+    GoRoute(path: '/chat', builder: (context, state) => ChatPage()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
     GoRoute(path: '/home_page', builder: (context, state) => HomePage()),
   ],

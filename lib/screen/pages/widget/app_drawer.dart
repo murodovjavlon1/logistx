@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:logistx/screen/pages/chat.dart';
+import 'package:logistx/screen/pages/my_application.dart';
+import 'package:logistx/screen/pages/my_vehicles.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -41,13 +44,22 @@ class AppDrawer extends StatelessWidget {
                 },
               ),
             ),
-          //  const Divider(),
-           // Text("Main Menu"),
+            //  const Divider(),
+            // Text("Main Menu"),
             Card(
               child: ListTile(
                 leading: const Icon(Icons.chat),
                 title: const Text("Chat"),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ChatPage();
+                      },
+                    ),
+                  );
+                },
               ),
             ),
             Card(
@@ -55,7 +67,14 @@ class AppDrawer extends StatelessWidget {
                 leading: const Icon(Icons.local_shipping),
                 title: const Text("My vehicles"),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MyVehicles();
+                      },
+                    ),
+                  );
                 },
               ),
             ),
@@ -64,7 +83,14 @@ class AppDrawer extends StatelessWidget {
                 leading: const Icon(Icons.apps),
                 title: const Text("Applications"),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return NoDataScreen();
+                      },
+                    ),
+                  );
                 },
               ),
             ),
